@@ -9,10 +9,9 @@ torch.cuda.reset_peak_memory_stats()
 # -----------------------
 # Load audio file
 # -----------------------
-# need to modify this:
 file_path = "/home/lm2445/project_pi_sjf37/lm2445/Arabic/V8.wav"
 output_name = "V8"
-#------------------------
+
 waveform, sr = torchaudio.load(file_path)
 
 # Convert to mono if audio has multiple channels
@@ -37,30 +36,35 @@ model = AutoModelForSpeechSeq2Seq.from_pretrained(
     torch_dtype=torch_dtype,
     low_cpu_mem_usage=True,
     use_safetensors=True
-)
-model.to(device)
+).to(device)
 
 processor = AutoProcessor.from_pretrained(model_id)
 
+# -----------------------
+# Build Whisper-ASR pipeline (Arabic transcription only)
+# -----------------------
 pipe = pipeline(
     "automatic-speech-recognition",
     model=model,
     tokenizer=processor.tokenizer,
     feature_extractor=processor.feature_extractor,
-    torch_dtype=torch_dtype,
     device=device,
-    return_timestamps=True
+    torch_dtype=torch_dtype,
+    return_timestamps=False,     # if you want timestamps: True is fine
+    generate_kwargs={
+        "language": "ar",        # force Arabic
+        "task": "transcribe",    # do NOT translate
+        "forced_decoder_ids": None,  # avoid conflicts
+    },
 )
-
-# Truncate to 30 seconds
-sample["array"] = sample["array"][:int(30 * sample["sampling_rate"])]
 
 # -----------------------
 # Run transcription
 # -----------------------
+sample["array"] = sample["array"][: int(30 * sample["sampling_rate"])]
+
 result = pipe(sample)
 transcribed_text = result["text"]
-
 print(transcribed_text)
 
 # -----------------------

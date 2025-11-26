@@ -6,8 +6,10 @@ import os
 # -----------------------
 # Settings
 # -----------------------
-input_file = "V8_output_transcription.txt"                 # <-- your input .txt
-output_file = f"{input_file.split(".txt")[0]}_output_deidentified.txt"       # <-- output .txt
+input_file = "V8_output_transcription.txt"   # your input
+output_file = f"{input_file.split('.txt')[0]}_output_deidentified.txt"
+
+CHUNK_SIZE = 300   # safe chunk size for BERT
 
 # -----------------------
 # Load NER model
@@ -27,42 +29,60 @@ with open(input_file, "r", encoding="utf-8") as f:
     text = f.read().strip()
 
 # -----------------------
-# Run NER
+# Chunking (fix BERT 512 limit)
 # -----------------------
-results = ner(text)
+def chunk_text(text, size):
+    chunks = []
+    start = 0
+    while start < len(text):
+        end = min(start + size, len(text))
+        chunks.append(text[start:end])
+        start = end
+    return chunks
+
+chunks = chunk_text(text, CHUNK_SIZE)
 
 # -----------------------
-# Build replacements
+# Process chunks with NER + replacement
 # -----------------------
-deidentified_text = text
+processed_chunks = []
 
-for entity in results:
+for chunk in chunks:
+    results = ner(chunk)
+    deidentified = chunk
 
-    # skip malformed entries
-    if "word" not in entity:
-        continue
+    for entity in results:
+        # Skip malformed entries
+        if "word" not in entity:
+            continue
 
-    ent_text = entity["word"]
+        ent_text = entity["word"]
 
-    # determine entity label safely
-    if "entity_group" in entity and entity["entity_group"]:
-        ent_label = entity["entity_group"]
-    elif "entity" in entity and entity["entity"]:
-        ent_label = entity["entity"].split("-")[-1]
-    else:
-        continue
+        # Determine entity label safely
+        if "entity_group" in entity and entity["entity_group"]:
+            ent_label = entity["entity_group"]
+        elif "entity" in entity and entity["entity"]:
+            ent_label = entity["entity"].split("-")[-1]
+        else:
+            continue
 
-    placeholder = f"<{ent_label}>"
+        placeholder = f"<{ent_label}>"
 
-    pattern = re.escape(ent_text)
-    deidentified_text = re.sub(pattern, placeholder, deidentified_text)
+        pattern = re.escape(ent_text)
+        deidentified = re.sub(pattern, placeholder, deidentified)
+
+    processed_chunks.append(deidentified)
+
+# -----------------------
+# Combine chunks
+# -----------------------
+deidentified_text = "".join(processed_chunks)
+
 # -----------------------
 # Print results
 # -----------------------
 print("=== Original Text ===")
 print(text)
-print("\n=== NER Output ===")
-print(results)
 print("\n=== De-identified Text ===")
 print(deidentified_text)
 
