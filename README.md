@@ -40,3 +40,14 @@ python -m ipykernel install --user --name arabic_proj --display-name "arabic_pro
 ```
 You can then select arabic_proj_2025 inside Jupyter.
 
+## 1.5 modify the input audio path in transcribe.py, then
+
+```bash
+python transcribe.py
+```
+
+## 1.6 modify the input text path of deidentify.py, then
+
+```bash
+python deidentify.py
+```
