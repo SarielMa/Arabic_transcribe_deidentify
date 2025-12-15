@@ -6,7 +6,10 @@ import os
 # -----------------------
 # Settings
 # -----------------------
-input_file = "V8_output_transcription.txt"   # your input
+# you need to set the input text path
+input_file = "V8_output_transcription.txt"   
+# ------------------------
+# the following does not need to modify
 output_file = f"{input_file.split('.txt')[0]}_output_deidentified.txt"
 
 CHUNK_SIZE = 300   # safe chunk size for BERT

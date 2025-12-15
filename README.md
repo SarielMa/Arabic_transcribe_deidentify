@@ -35,6 +35,11 @@ You can then select arabic_proj_2025 inside Jupyter.
 ```bash
 python transcribe.py
 ```
+### 1.5.1 if the audio is too long, use the chunk version
+
+```bash
+python transcribe_chunk.py
+```
 
 ## 1.6 modify the input text path of deidentify.py, then
 
