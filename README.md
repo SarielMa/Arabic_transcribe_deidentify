@@ -15,18 +15,8 @@ Make sure `environment.yml` is in your working directory.
 
 ```bash
 conda env create -f environment.yml
-# Environment Setup
-
-## 1.1 Install Miniconda
-If Conda is not installed, download Miniconda from:
-https://docs.conda.io/en/latest/miniconda.html
-
-## 1.2 Create the environment
-Ensure `environment.yml` is in your working directory.
-
-```bash
-conda env create -f environment.yml
 ```
+
 ## 1.3 Activate the environment
 
 ```bash
