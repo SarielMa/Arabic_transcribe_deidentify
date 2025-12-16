@@ -4,8 +4,8 @@ import gc
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 import torchaudio
 import math
-
-torch.cuda.reset_peak_memory_stats()
+if torch.cuda.is_available():
+    torch.cuda.reset_peak_memory_stats()
 # -----------------------
 # you need to config the file_path and output_name
 file_path = "/home/lm2445/project_pi_sjf37/lm2445/Arabic/V8.wav"
@@ -82,7 +82,9 @@ for i in range(num_chunks):
 
     del result, chunk
     gc.collect()
-    torch.cuda.empty_cache()
+    # torch.cuda.empty_cache()
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
 
 # -----------------------
 # Save output
@@ -95,9 +97,9 @@ with open(out_file, "w", encoding="utf-8") as f:
 print(final_text)
 
 print(f"\nSaved transcription → {out_file}")
-
-peak = torch.cuda.max_memory_allocated()
-print(f"Peak GPU memory: {peak / 1024**2:.2f} MB")
+if torch.cuda.is_available():
+    peak = torch.cuda.max_memory_allocated()
+    print(f"Peak GPU memory: {peak / 1024**2:.2f} MB")
 
 
 
