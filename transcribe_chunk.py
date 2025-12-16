@@ -8,7 +8,7 @@ if torch.cuda.is_available():
     torch.cuda.reset_peak_memory_stats()
 # -----------------------
 # you need to config the file_path and output_name
-file_path = "/home/lm2445/project_pi_sjf37/lm2445/Arabic/V8.wav"
+file_path = r"C:\Users\lm2445\arabic\V8.wav"
 output_name = "V8"
 # -----------------------
 CHUNK_SECONDS = 30   # no overlap

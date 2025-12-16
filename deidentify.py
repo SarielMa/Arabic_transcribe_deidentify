@@ -7,7 +7,7 @@ import os
 # Settings
 # -----------------------
 # you need to set the input text path
-input_file = "V8_output_transcription.txt"   
+input_file = r"V8_output_transcription.txt"   
 # ------------------------
 # the following does not need to modify
 output_file = f"{input_file.split('.txt')[0]}_output_deidentified.txt"
