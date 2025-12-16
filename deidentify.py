@@ -17,7 +17,8 @@ CHUNK_SIZE = 300   # safe chunk size for BERT
 # -----------------------
 # Load NER model
 # -----------------------
-torch.cuda.reset_peak_memory_stats()
+if torch.cuda.is_available():
+    torch.cuda.reset_peak_memory_stats()
 
 ner = pipeline(
     "ner",
@@ -100,5 +101,6 @@ print(f"\nDe-identified text saved to: {output_file}")
 # -----------------------
 # GPU memory
 # -----------------------
-peak = torch.cuda.max_memory_allocated()
-print(f"Peak GPU memory usage: {peak / 1024**2:.2f} MB")
+if torch.cuda.is_available():
+    peak = torch.cuda.max_memory_allocated()
+    print(f"Peak GPU memory usage: {peak / 1024**2:.2f} MB")
