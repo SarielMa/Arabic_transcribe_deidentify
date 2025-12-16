@@ -14,9 +14,6 @@ def get_transcribe_and_deidentify(file_path):
     if torch.cuda.is_available():
         torch.cuda.reset_peak_memory_stats()
     # -----------------------
-    # you need to config the file_path and output_name
-    # file_path = r"C:\Users\lm2445\arabic\V8.wav"
-    # output_name = "V8"
     file_path = file_path
     result_path = "results"
     if not os.path.exists(result_path):
@@ -226,9 +223,11 @@ def get_transcribe_and_deidentify(file_path):
 
 if __name__ == "__main__":
     #file_path = Path(r"C:\Users\lm2445\arabic\arabic_speech_sample\ARA NORM  0002.wav")
+    # -----------------------------------------------------------------------
     # need config the file type and folder that contains all the audio files
     file_type = "wav" # can also be 'mp3'
-    audio_dir = Path(r"C:\Users\lm2445\arabic\arabic_speech_sample") # the folder containing all the audios
+    audio_dir = Path(r"C:\Users\lm2445\arabic\arabic_speech_sample") # the folder containing all the audios, r is needed 
+    # -----------------------------------------------------------------------
     #wav_files = list(audio_dir.glob("*.wav"))
     for file_path in audio_dir.glob(f"*.{file_type}"):
         print (f"working on the file {file_path}")

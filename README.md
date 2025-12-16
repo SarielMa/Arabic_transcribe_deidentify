@@ -54,3 +54,10 @@ python transcribe_chunk.py
 ```bash
 python deidentify.py
 ```
+
+## 2.3 Or you can run the whole thing:
+
+```bash
+python transcribe_chunk_plus_deidentify.py
+```
+It can transcribe and deidentify all the audio file of specific types in a specific folder. You need to set the type (wav, mp3, etc) and the folder path in transcribe_chunk_plus_deidentify.py
