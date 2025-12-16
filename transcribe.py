@@ -4,12 +4,14 @@ from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 import torchaudio
 
 # Reset GPU peak memory stats
-torch.cuda.reset_peak_memory_stats()
+if torch.cuda.is_available():
+    torch.cuda.reset_peak_memory_stats()
 
 # -----------------------
 # Load audio file
 # -----------------------
-file_path = "/home/lm2445/project_pi_sjf37/lm2445/Arabic/V8.wav"
+#file_path = "/home/lm2445/project_pi_sjf37/lm2445/Arabic/V8.wav"
+file_path = r"C:\Users\lm2445\arabic\V8.wav"
 output_name = "V8"
 
 waveform, sr = torchaudio.load(file_path)
@@ -79,5 +81,6 @@ print(f"\nTranscription saved to: {output_file}")
 # -----------------------
 # GPU Memory
 # -----------------------
-peak_memory = torch.cuda.max_memory_allocated()
-print(f"Peak GPU memory usage: {peak_memory / 1024**2:.2f} MB")
+if torch.cuda.is_available():
+    peak = torch.cuda.max_memory_allocated()
+    print(f"Peak GPU memory: {peak / 1024**2:.2f} MB")
