@@ -17,6 +17,12 @@ Make sure `environment.yml` is in your working directory.
 conda env create -f environment.yml
 ```
 
+If you are using Windows system, use the following command instead:
+
+```bash
+conda env create -f .\environment_win.yml
+```
+
 ## 1.3 Activate the environment
 
 ```bash
@@ -30,18 +36,20 @@ python -m ipykernel install --user --name arabic_proj --display-name "arabic_pro
 ```
 You can then select arabic_proj_2025 inside Jupyter.
 
-## 1.5 modify the input audio path in transcribe.py, then
+# 2. Run the script
+
+## 2.1 modify the input audio path in transcribe.py, then
 
 ```bash
 python transcribe.py
 ```
-### 1.5.1 if the audio is too long, use the chunk version
+### 2.1.1 if the audio is too long, use the chunk version
 
 ```bash
 python transcribe_chunk.py
 ```
 
-## 1.6 modify the input text path of deidentify.py, then
+## 2.2 modify the input text path of deidentify.py, then
 
 ```bash
 python deidentify.py
