@@ -18,7 +18,8 @@ def main() -> int:
     ap.add_argument("--calls_root", required=True, help="Path to Calls/ folder (contains YYYYMMDD subfolders)")
     ap.add_argument("--out_root", default="output", help="Output root folder")
     ap.add_argument("--transcribe_script", default="transcribe_chunk_debug.py", help="Transcription script filename/path")
-    ap.add_argument("--deid_script", default="deidentify_cli.py", help="De-id script filename/path")
+    ap.add_argument("--deid_script", default="deidentify_debug.py", help="De-id script filename/path")
+    ap.add_argument("--format", default=".wav", help="can also be .mp3")
 
     # transcription params
     ap.add_argument("--chunk_seconds", type=float, default=15.0)
@@ -56,7 +57,9 @@ def main() -> int:
     deid_root.mkdir(parents=True, exist_ok=True)
 
     # Find mp3 files
-    pattern = "**/*.mp3" if args.recursive else "*.mp3"
+    format = args.format
+    #pattern = "**/*.mp3" if args.recursive else "*.mp3"
+    pattern = f"**/*{format}" if args.recursive else f"*{format}"
     mp3_files = sorted(calls_root.glob(f"*/{pattern}"))  # at least one level: Calls/YYYYMMDD/...
 
     print(f"Found {len(mp3_files)} mp3 files under {calls_root}")
