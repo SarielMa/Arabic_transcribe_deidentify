@@ -46,7 +46,7 @@ python transcribe.py
 ### 2.1.1 if the audio is too long, use the chunk version
 
 ```bash
-ython .\transcribe_chunk_debug.py --input "C:\Users\lm2445\arabic\V8.wav" --output_name V8
+python .\transcribe_chunk_debug.py --input "C:\Users\lm2445\arabic\V8.wav" --output_name V8
 ```
 
 This is tested on windows, you can modify the input and output_name as needed
