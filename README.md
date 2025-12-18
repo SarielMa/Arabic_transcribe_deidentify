@@ -38,12 +38,12 @@ You can then select arabic_proj_2025 inside Jupyter.
 
 # 2. Run the script
 
-## 2.1 modify the input audio path in transcribe.py, then
-
+## 2.1 Run the transcribing:
+<!-- 
 ```bash
 python transcribe.py
 ```
-### 2.1.1 if the audio is too long, use the chunk version
+### 2.1.1 if the audio is too long, use the chunk version -->
 
 ```bash
 python .\transcribe_chunk_debug.py --input "C:\Users\lm2445\arabic\V8.wav" --output_name V8
