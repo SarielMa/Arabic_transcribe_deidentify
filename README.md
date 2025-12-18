@@ -46,8 +46,10 @@ python transcribe.py
 ### 2.1.1 if the audio is too long, use the chunk version
 
 ```bash
-python transcribe_chunk.py
+ython .\transcribe_chunk_debug.py --input "C:\Users\lm2445\arabic\V8.wav" --output_name V8
 ```
+
+This is tested on windows, you can modify the input and output_name as needed
 
 ## 2.2 modify the input text path of deidentify.py, then
 
@@ -55,9 +57,9 @@ python transcribe_chunk.py
 python deidentify.py
 ```
 
-## 2.3 Or you can run the whole thing:
+<!-- ## 2.3 Or you can run the whole thing:
 
 ```bash
 python transcribe_chunk_plus_deidentify.py
 ```
-It can transcribe and deidentify all the audio file of specific types in a specific folder. You need to set the type (wav, mp3, etc) and the folder path in transcribe_chunk_plus_deidentify.py
+It can transcribe and deidentify all the audio file of specific types in a specific folder. You need to set the type (wav, mp3, etc) and the folder path in transcribe_chunk_plus_deidentify.py -->

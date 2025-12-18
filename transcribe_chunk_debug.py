@@ -283,8 +283,9 @@ def main() -> int:
     # Run chunks
     texts: List[str] = []
     debug_rows: List[Dict] = []
-    
+    print (f"there are totally {len(indices)} chunks")
     for i, (s, e) in enumerate(indices):
+        print (f"the chunk {i} is being processed...")
         chunk = waveform[s:e]
     
         rms, peak, silence_ratio = _chunk_stats(chunk, silence_thresh=0.01)
