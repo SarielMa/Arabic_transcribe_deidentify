@@ -57,6 +57,57 @@ This is tested on windows, you can modify the input and output_name as needed
 python deidentify.py
 ```
 
+### 2.3 Or use the debug version as well:
+
+```bash
+ python .\deidentify_debug.py --input "C:\Users\lm2445\arabic\Arabic_transcribe_deidentify\output\V8_output_transcription.txt"
+```
+
+# 3. Transcribe and deidentify one single audio file in one run <kbd>TO BE DONE</kbd>
+
+```bash
+python run_audio_to_deid_single.py --input "C:\Users\lm2445\arabic\V8.wav"
+
+```
+
+# 4. Run all the .mp3 audio files <kbd>TO BE DONE</kbd>
+
+## Data Folder Structure
+
+The audio data are organized in a date-based folder structure.  
+All call recordings (`.mp3`) are stored under daily subfolders.
+
+```
+Calls/
+├─ 20210609/
+│  ├─ 1623239388485_4104_667_3.mp3
+│  ├─ 1623240123456_4104_667_4.mp3
+│  └─ ...
+├─ 20210610/
+│  ├─ 1623325xxxxx_...._...._12.mp3
+│  └─ ...
+├─ 20210611/
+│  └─ ...
+└─ ...
+```
+
+Related metadata files:
+
+```
+Dataset_Root/
+├─ Calls/
+│  └─ (YYYYMMDD folders with .mp3 files)
+├─ output_with_filenames.xlsx
+└─ Matched_data_Embrace.xlsx
+```
+
+## run:
+
+```bash
+python .\run_calls_tree_to_deid.py --calls_root "PATH TO Calls" --out_root ".\output_all" --continue_on_error
+```
+
+
 <!-- ## 2.3 Or you can run the whole thing:
 
 ```bash
