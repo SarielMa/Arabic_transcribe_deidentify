@@ -104,7 +104,7 @@ Dataset_Root/
 ## run:
 
 ```bash
-python .\run_calls_tree_to_deid.py --calls_root "C:\Users\lm2445\arabic\Calls" --out_root ".\output_all" --continue_on_error
+python .\run_calls_tree_to_deid.py --calls_root "C:\Users\lm2445\arabic\Calls" --out_root ".\output_all" --continue_on_error --format ".mp3"
 ```
 
 

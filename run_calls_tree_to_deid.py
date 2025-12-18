@@ -62,7 +62,7 @@ def main() -> int:
     pattern = f"**/*{format}" if args.recursive else f"*{format}"
     mp3_files = sorted(calls_root.glob(f"*/{pattern}"))  # at least one level: Calls/YYYYMMDD/...
 
-    print(f"Found {len(mp3_files)} mp3 files under {calls_root}")
+    print(f"Found {len(mp3_files)} {format} files under {calls_root}")
     if not mp3_files:
         return 0
 
