@@ -51,13 +51,26 @@ python .\transcribe_chunk_debug.py --input "C:\Users\lm2445\arabic\V8.wav" --out
 
 This is tested on windows, you can modify the input and output_name as needed
 
+### 2.1.1 If the input is Levantine Arabic not Modern Standard Arabic (MSA), please the Levantine version:
+
+First, need to install some dependency (Do this inside the conda environment of (arabic_proj)):
+
+```bash
+python -m pip install -U faster-whisper
+```
+
+Then use the following to run it:
+```bash
+python .\transcribe_chunk_debug_levantine.py --input "C:\Users\lm2445\arabic\test2.mp3" --output_name test2_levantine
+```
+
 ## 2.2 modify the input text path of deidentify.py, then
 
 ```bash
 python deidentify.py
 ```
 
-### 2.3 Or use the debug version as well:
+### 2.2.1 Or use the debug version as well:
 
 ```bash
  python .\deidentify_debug.py --input "C:\Users\lm2445\arabic\Arabic_transcribe_deidentify\output\V8_output_transcription.txt"

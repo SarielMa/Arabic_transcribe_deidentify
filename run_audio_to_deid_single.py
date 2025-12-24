@@ -25,7 +25,7 @@ def main():
     )
     ap.add_argument(
         "--transcribe_script",
-        default="transcribe_chunk_debug.py",
+        default="transcribe_chunk_debug_levantine.py",
         help="Path to transcription script"
     )
     ap.add_argument(
