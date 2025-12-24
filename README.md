@@ -51,7 +51,7 @@ python .\transcribe_chunk_debug.py --input "C:\Users\lm2445\arabic\V8.wav" --out
 
 This is tested on windows, you can modify the input and output_name as needed
 
-### 2.1.1 If the input is Levantine Arabic not Modern Standard Arabic (MSA), please the Levantine version:
+### 2.1.1 If the input is Levantine Arabic not Modern Standard Arabic (MSA), please use the Levantine version:
 
 First, need to install some dependency (Do this inside the conda environment of (arabic_proj)):
 
