@@ -26,6 +26,10 @@ import tempfile
 from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
+import os
+os.environ["HF_HUB_DISABLE_SYMLINKS_WARNING"] = "1"
+os.environ["HF_HUB_DISABLE_SYMLINKS"] = "1"
+
 
 import torch
 
@@ -164,7 +168,7 @@ def _write_wav_pcm16(path: Path, waveform: torch.Tensor, sr: int) -> None:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--input", help="Path to an audio file (mp3/wma/wav/m4a...)", default="/home/lm2445/project_pi_sjf37/lm2445/Arabic_env/1224_audio/test2.mp3")
+    ap.add_argument("--input", help="Path to an audio file (mp3/wma/wav/m4a...)", default=r"C:\Users\lm2445\arabic\real_test\test2.mp3")
     ap.add_argument("--output_name", help="Base name for outputs (no extension)", default="test2_levantine")
     ap.add_argument("--out_dir", default="output", help="Output folder")
 
