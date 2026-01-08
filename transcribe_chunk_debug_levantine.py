@@ -169,7 +169,7 @@ def _write_wav_pcm16(path: Path, waveform: torch.Tensor, sr: int) -> None:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--input", help="Path to an audio file (mp3/wma/wav/m4a...)", default=r"C:\Users\lm2445\arabic\real_test\test2.mp3")
-    ap.add_argument("--output_name", help="Base name for outputs (no extension)", default="test2_levantine_transcription")
+    ap.add_argument("--output_name", help="Basic name for outputs txt (no extension)", default="test2_levantine_transcription")
     ap.add_argument("--out_dir", default="output", help="Output folder")
 
     # faster-whisper model: can be HF repo id OR local directory containing model.bin
