@@ -120,6 +120,36 @@ Dataset_Root/
 python .\run_calls_tree_to_deid.py --calls_root "C:\Users\lm2445\arabic\Calls" --out_root ".\output_all" --continue_on_error --format ".mp3"
 ```
 
+# 5. Filter all the .mp3 audio files in range 5 min to 10 min
+
+First, install the package in the environment:
+
+```bash
+pip install mutagen
+```
+
+Second, config the path of SOURCE_ROOT in the python script "filter_and_put_into_one_folder.py"
+
+Third, run the script:
+
+```bash
+python .\filter_and_put_into_one_folder.py
+```
+
+output message like:
+
+```bash
+Scanning files...
+Total eligible files found: 1
+Only 1 files available.
+Copying 1 files...
+Done.
+```
+
+the filtered mp3s will be stored in the folder "./filtered_5_10min".
+
+# 6. Filter all the .mp3 audio files in range 5 min to 10 min
+
 
 <!-- ## 2.3 Or you can run the whole thing:
 
