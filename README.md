@@ -148,7 +148,17 @@ Done.
 
 the filtered mp3s will be stored in the folder "./filtered_5_10min".
 
-# 6. Filter all the .mp3 audio files in range 5 min to 10 min
+# 6. Do transcribing and deindentifying for all the mp3s in the folder 
+
+Config the MP3_FOLDER and SCRIPT_DIR. The first is the path to the folder of data. The second is the path to the current directory. 
+
+Then run the following command if you are using Windows System.
+```bash
+.\run_all.bat
+```
+If you are using linux, use the run_all.sh. Config is the same.
+
+
 
 
 <!-- ## 2.3 Or you can run the whole thing:
