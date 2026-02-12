@@ -10,8 +10,8 @@ from mutagen.mp3 import MP3
 # ========= CONFIG =========
 SOURCE_ROOT = r"C:\Users\lm2445\arabic\Calls"              # root folder, need to configure to the path to your "Calls"
 DEST_FOLDER = "filtered_5_10min"
-MIN_MINUTES = 0
-MAX_MINUTES = 1
+MIN_MINUTES = 5
+MAX_MINUTES = 10
 N_SAMPLES = 1000
 SEED = 42
 # ===========================
