@@ -9,11 +9,11 @@ from mutagen.mp3 import MP3
 
 # ========= CONFIG =========
 SOURCE_ROOT = r"C:\Users\lm2445\arabic\Calls"              # root folder, need to configure to the path to your "Calls"
-DEST_FOLDER = "filtered_5_10min"
-MIN_MINUTES = 5
-MAX_MINUTES = 10
-N_SAMPLES = 1000
-SEED = 42
+DEST_FOLDER = "filtered_5_10min" # the output folder name, you can modify as needed. 
+MIN_MINUTES = 5 # lower boundary of the filtered mp3 files
+MAX_MINUTES = 10 # higher boundary of the filtered mp3 files
+N_SAMPLES = 1000 # number of samples you want
+SEED = 42 # no need to modify
 # ===========================
 
 random.seed(SEED)

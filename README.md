@@ -128,7 +128,7 @@ First, install the package in the environment:
 pip install mutagen
 ```
 
-Second, config the path of SOURCE_ROOT in the python script "filter_and_put_into_one_folder.py"
+Second, 1- config the path of SOURCE_ROOT in the python script "filter_and_put_into_one_folder.py"; 2- make sure MIN_MINUTES and MAX_MINUTES are in correct range. In this case, it should be 5 and 10.
 
 Third, run the script:
 
