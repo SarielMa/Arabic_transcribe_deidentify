@@ -128,7 +128,7 @@ First, install the package in the environment:
 pip install mutagen
 ```
 
-Second, 1- config the path of SOURCE_ROOT in the python script "filter_and_put_into_one_folder.py"; 2- make sure MIN_MINUTES and MAX_MINUTES are in correct range. In this case, it should be 5 and 10.
+Second, config the path of SOURCE_ROOT in the python script "filter_and_put_into_one_folder.py"
 
 Third, run the script:
 
@@ -150,7 +150,13 @@ the filtered mp3s will be stored in the folder "./filtered_5_10min".
 
 # 6. Do transcribing and deindentifying for all the mp3s in the folder 
 
+Config the MP3_FOLDER and SCRIPT_DIR. The first is the path to the folder of data. The second is the path to the current directory. 
 
+Then run the following command if you are using Windows System.
+```bash
+.\run_all.bat
+```
+If you are using linux, use the run_all.sh. Config is the same.
 
 
 
