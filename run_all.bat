@@ -4,7 +4,7 @@ setlocal enabledelayedexpansion
 REM ===== CONFIG =====
 set MP3_FOLDER=C:\Users\lm2445\arabic\Arabic_transcribe_deidentify\filtered_5_10min
 set SCRIPT_DIR=C:\Users\lm2445\arabic\Arabic_transcribe_deidentify
-set OUTPUT_DIR=%SCRIPT_DIR%\output
+set OUTPUT_DIR=%SCRIPT_DIR%\Output
 REM ==================
 
 cd %SCRIPT_DIR%

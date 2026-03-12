@@ -14,6 +14,9 @@ Optional (recommended) for MP3 decoding fallback:
 
 Example:
   python transcribe_chunk_fasterwhisper.py --input "/path/call.mp3" --output_name call1 --debug
+
+GPU usage: 
+   Current script by default disabled GPU usage, because some issue of backend support for GPU. So it runs on GPU
 """
 
 from __future__ import annotations

@@ -180,7 +180,7 @@ def main() -> int:
     ap.add_argument("--input", help="Path to an audio file (mp3/wma/wav/m4a...)", default="/home/lm2445/project_pi_sjf37/lm2445/Arabic/V8.wav")
     ap.add_argument("--output_name", help="Base name for outputs (no extension)", default="V8")
     ap.add_argument("--out_dir", default="output", help="Output folder")
-    ap.add_argument("--model_id", default="lm2445/for_transribing", help="HF model id")
+    ap.add_argument("--model_id", default="lm2445/for_transribing", help="my HF model id for the deidentify model")
     ap.add_argument("--language", default="ar", help="Language code (e.g., ar)")
     ap.add_argument("--chunk_seconds", type=float, default=15.0)
     ap.add_argument("--overlap_seconds", type=float, default=1.0)
