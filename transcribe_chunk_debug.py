@@ -181,7 +181,7 @@ def main() -> int:
     ap.add_argument("--output_name", help="Base name for outputs (no extension)", default="V8")
     ap.add_argument("--out_dir", default="output", help="Output folder")
     ap.add_argument("--model_id", default="lm2445/for_transribing", help="my HF model id for the deidentify model")
-    ap.add_argument("--language", default="ar", help="Language code (e.g., ar)")
+    ap.add_argument("--language", default="ar", help="Language code (e.g., ar), ar means the arabic")
     ap.add_argument("--chunk_seconds", type=float, default=15.0)
     ap.add_argument("--overlap_seconds", type=float, default=1.0)
     ap.add_argument("--device", default="auto", choices=["auto", "cpu", "cuda"])
