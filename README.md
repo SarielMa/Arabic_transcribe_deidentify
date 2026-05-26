@@ -158,6 +158,29 @@ Then run the following command if you are using Windows System.
 ```
 If you are using linux, use the run_all.sh. Config is the same.
 
+# 7. exclude the phone number and copy the only de-indentified files to a folder
+
+The script `copy_and_exclude_phone_number.py` copies only the de-identified files from the source folder to a target folder.
+
+Before running the script, configure the following paths inside `copy_and_exclude_phone_number.py`:
+
+```python
+source_folder = Path(r"path\to\your\source_folder")
+target_folder = Path(r"path\to\your\target_folder")
+```
+The script will:
+
+Select only files whose names end with deidentified.
+Remove the phone-number block from the filename.
+The phone number is assumed to be the 3rd block when splitting the filename by _.
+Copy the renamed files to the target folder.
+
+Run the script with:
+
+```bash
+python copy_and_exclude_phone_number.py
+```
+
 
 
 
