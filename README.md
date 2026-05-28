@@ -165,8 +165,8 @@ The script `copy_and_exclude_phone_number.py` copies only the de-identified file
 Before running the script, configure the following paths inside `copy_and_exclude_phone_number.py`:
 
 ```python
-source_folder = Path(r"path\to\your\source_folder")
-target_folder = Path(r"path\to\your\target_folder")
+SOURCE_DIR = Path(r"source_folder")
+DEST_DIR = Path(r"output_folder")
 ```
 The script will:
 

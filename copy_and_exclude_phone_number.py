@@ -1,47 +1,48 @@
 from pathlib import Path
 import shutil
+import re
 
-# Change this to your original folder path
-source_folder = Path(r"C:\Users\lm2445\arabic\Arabic_transcribe_deidentify\input_files")
+# ====== Change these paths ======
+SOURCE_DIR = Path(r"source_folder")
+DEST_DIR = Path(r"output_folder")
+# ================================
 
-# Change this to your output folder path
-target_folder = Path(r"C:\Users\lm2445\arabic\Arabic_transcribe_deidentify\output_files")
-target_folder.mkdir(parents=True, exist_ok=True)
+DEST_DIR.mkdir(parents=True, exist_ok=True)
 
-# The phone number is the 3rd block after splitting by "_"
-# Python index starts from 0, so the 3rd block is index 2
-PHONE_BLOCK_INDEX = 2
+# Matches an 8-digit block that is NOT the first date block
+# Example:
+# 20210610_1623348602254_4144_12345678_170_output_transcription_output_deidentified.txt
+# becomes:
+# 20210610_1623348602254_4144_170_output_transcription_output_deidentified.txt
+PHONE_BLOCK_PATTERN = re.compile(r"(?<=_)\d{8}_")
 
-for file_path in source_folder.iterdir():
+for file_path in SOURCE_DIR.iterdir():
     if not file_path.is_file():
         continue
 
-    # Use stem because Windows may hide ".txt"
-    # Example:
-    # abc_deidentified.txt -> stem is abc_deidentified
-    if not file_path.stem.endswith("deidentified"):
+    # Only process txt files
+    if file_path.suffix.lower() != ".txt":
         continue
 
-    parts = file_path.stem.split("_")
-
-    if len(parts) <= PHONE_BLOCK_INDEX:
-        print(f"Skipped, not enough filename blocks: {file_path.name}")
+    # Only copy deidentified files
+    if "output_deidentified" not in file_path.name:
         continue
 
-    # Remove the 3rd block
-    new_parts = parts[:PHONE_BLOCK_INDEX] + parts[PHONE_BLOCK_INDEX + 1:]
-    new_stem = "_".join(new_parts)
+    # Remove the telephone-number block from the filename
+    new_name = PHONE_BLOCK_PATTERN.sub("", file_path.name, count=1)
 
-    # Keep the original file extension, such as .txt
-    new_name = new_stem + file_path.suffix
-    target_path = target_folder / new_name
+    dest_path = DEST_DIR / new_name
 
-    # Avoid overwriting files with the same name
-    counter = 1
-    while target_path.exists():
-        target_path = target_folder / f"{new_stem}_{counter}{file_path.suffix}"
-        counter += 1
+    # Avoid overwriting if duplicate names exist
+    if dest_path.exists():
+        stem = dest_path.stem
+        suffix = dest_path.suffix
+        i = 1
+        while dest_path.exists():
+            dest_path = DEST_DIR / f"{stem}_copy{i}{suffix}"
+            i += 1
 
-    shutil.copy2(file_path, target_path)
+    shutil.copy2(file_path, dest_path)
+    print(f"Copied: {file_path.name} -> {dest_path.name}")
 
-    print(f"Copied: {file_path.name} -> {target_path.name}")
+print("Done.")
