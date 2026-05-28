@@ -172,7 +172,7 @@ The script will:
 
 Select only files whose names end with deidentified.
 Remove the phone-number block from the filename.
-The phone number is assumed to be the 3rd block when splitting the filename by _.
+The phone number is assumed to be an 8-digit block besides the first block when splitting the filename by _.
 Copy the renamed files to the target folder.
 
 Run the script with:
